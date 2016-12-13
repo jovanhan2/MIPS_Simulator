@@ -1,0 +1,24 @@
+#include "mips.h"
+
+int main() {
+  mips_mem_h mem = mips_mem_create_ram(4096);
+
+  mips_cpu_h cpu = mips_cpu_create(mem);
+
+  uint32_t addInstr= 0x00851021;
+
+  mips_test_begin_suite();
+     
+        testId=mips_test_begin_test("addu");
+
+	uint32_t tmp = (addInstr << 24) | ((addInstr<<8)&0x00FF0000)| ((addInstr>>8)&0x0000FF00) | (addInstr>>24);
+
+	mips_mem_write(mem,0,(uint8_t*)&tmp);
+
+	mips_step_cpu(cpu); 
+        mips_test_end_test(testId,1,0);
+        
+        mips_test_end_suite();
+
+
+ }
