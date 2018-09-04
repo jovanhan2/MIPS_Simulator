@@ -1,4 +1,4 @@
-#MIPS simulator
+# MIPS simulator
 
 Designed and created MIPS simulator from scratch - implemented 53 instructions. 
 Unit testing used for each instruction and test cases to ensure functionality.
